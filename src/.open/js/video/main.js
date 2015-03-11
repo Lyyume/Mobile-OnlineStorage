@@ -1,0 +1,3 @@
+var src;
+
+worker.getLocalStorage();

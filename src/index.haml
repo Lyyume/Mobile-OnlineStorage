@@ -1,0 +1,29 @@
+!!! 5
+%html
+  %head(lang="zh-cn")
+    %meta(charset="UTF-8")
+    %meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0")
+    %meta(name="format-detection" content="telphone=no")
+    %title 我的共享
+    %link(href="./.src/css/android.css" rel="stylesheet")
+  %body
+    #top
+      %img#menu(src="./.src/img/menu.png" )
+      %span#title 测试标题
+      %img#search(src="./.src/img/search.png" )
+    #aside
+      .welcome
+        %span设置
+      .config
+        %label(for="config-hide" ) 显示隐藏文件
+        %input#config-hide.checkbox(type="checkbox" checked="")
+      .config#config-floatButton
+        %label(for="config-hide" ) 显示浮动按钮
+        %input#config-FB.checkbox(type="checkbox" checked="checked")
+      .config#config-clean
+        %label 清除本地数据
+    #article
+      .down
+        %img(src="./.src/img/down.png" )
+        %span 下拉刷新
+  %script(src="./.src/js/index.js")
