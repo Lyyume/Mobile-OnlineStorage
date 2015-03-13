@@ -311,6 +311,7 @@ var renderAndroid = function(){
                             }
                             else if(tool.mySome(ext.image,pointer[target].____extension)){
                                 worker.regLocalStorage(JSON.stringify(pointer[target]),'Image');
+                                worker.regLocalStorage(JSON.stringify(pointer),'ImageSrc');
                                 if (window.navigator.msPointerEnabled){
                                     setTimeout(function(){
                                         window.location = './.open/image.html';

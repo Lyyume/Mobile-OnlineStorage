@@ -204,6 +204,7 @@ module.exports = function (grunt){
                     dest: '<%= config.dist %>',
                     src: [
                         '*.html',
+                        '*.command',
                         '.src/img/*.png',
                         '.src/css/fonts/*.*',
                         '.src/css/*.css',

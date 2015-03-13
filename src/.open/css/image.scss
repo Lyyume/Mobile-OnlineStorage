@@ -5,18 +5,43 @@
 #view{
   width: 100%;
   position: absolute;
+  overflow: hidden;
+}
+#touch{
+  position: fixed;
+  z-index: 100;
+  #left{
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    #leftCenter{
+      position: absolute;
+      height: 60%;
+      width: 50%;
+      left: 50%;
+      top: 20%;
+    }
+  }
+  #right{
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    left: 50%;
+    #rightCenter{
+      position: absolute;
+      height: 60%;
+      width: 50%;
+      top: 20%;
+    }
+  }
 }
 #stage{
   position: absolute;
   width: 100%;
   margin-bottom: 24px;
+  overflow: hidden;
   img{
-    margin: auto;
     position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
   }
 }
 #curtain{
@@ -27,7 +52,19 @@
   background-color: #ffffff;
   #name{
     font-size: 16px;
+    float: left;
+    padding: 4px;
+  }
+  #number{
+    font-size: 16px;
+    float: left;
+    padding: 4px;
+  }
+  #more-vert{
     position: absolute;
+    height: 16px;
+    width: 16px;
+    right: 0px;
     padding: 4px;
   }
 }

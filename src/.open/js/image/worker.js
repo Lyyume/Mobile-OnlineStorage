@@ -1,22 +1,13 @@
 var worker = function(){
     var public = {
         getLocalStorage: function(){
-            src = JSON.parse(localStorage.getItem("openImage"));
-            worker.getImageSize();
-        },
-        getImageSize: function(){
-            var img = new Image();
-            img.src = '../' + src.____src + '?' + Date.parse(new Date());
-            var check = function(){
-                console.log('width:' + img.width + ',height:' + img.height);
-                if(img.width>0 || img.height>0){
-                    height = img.height;
-                    width = img.width;
-                    clearInterval(set);
-                    render.createImg();
-                }
-            };
-            var set = setInterval(check,40);
+            src = JSON.parse(localStorage.getItem("openImageSrc"));
+            image = JSON.parse(localStorage.getItem("openImage"));
+            list = Object.keys(src).filter(function(str){
+                return !!str.match(/.jpg$/) || !!str.match(/.png$/) || !!str.match(/.bmp$/)
+            });
+            pointer = list.indexOf(image.____name);
+            render.createImg();
         }
     };
 

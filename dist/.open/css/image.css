@@ -4,19 +4,40 @@
 
 #view {
   width: 100%;
-  position: absolute; }
+  position: absolute;
+  overflow: hidden; }
+
+#touch {
+  position: fixed;
+  z-index: 100; }
+  #touch #left {
+    position: absolute;
+    width: 50%;
+    height: 100%; }
+    #touch #left #leftCenter {
+      position: absolute;
+      height: 60%;
+      width: 50%;
+      left: 50%;
+      top: 20%; }
+  #touch #right {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    left: 50%; }
+    #touch #right #rightCenter {
+      position: absolute;
+      height: 60%;
+      width: 50%;
+      top: 20%; }
 
 #stage {
   position: absolute;
   width: 100%;
-  margin-bottom: 24px; }
+  margin-bottom: 24px;
+  overflow: hidden; }
   #stage img {
-    margin: auto;
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0; }
+    position: absolute; }
 
 #curtain {
   position: fixed;
@@ -26,5 +47,15 @@
   background-color: #ffffff; }
   #curtain #name {
     font-size: 16px;
+    float: left;
+    padding: 4px; }
+  #curtain #number {
+    font-size: 16px;
+    float: left;
+    padding: 4px; }
+  #curtain #more-vert {
     position: absolute;
+    height: 16px;
+    width: 16px;
+    right: 0px;
     padding: 4px; }
