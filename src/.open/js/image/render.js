@@ -21,11 +21,9 @@ var render = function(){
         eventReg:function(){
             var timer = 0;
             tool.touchWP(left,'touchend',function(){
-                console.log('last');
                 last();
             });
             tool.touchWP(right,'touchend',function(){
-                console.log('next');
                 next();
             });
             tool.touchWP(leftCenter,'touchend',function(e){
@@ -33,14 +31,13 @@ var render = function(){
                 timer = timer + 1;
                 var touch = setTimeout(function(){
                     timer = 0;
-                    console.log('last');
                     last();
                 },300);
                 if(timer === 2){
                     timer = 0;
                     clearTimeout(touch);
                     clearTimeout(touch - 1);
-                    console.log('dbTouch');
+                    dbTouch();
                 }
             });
             tool.touchWP(rightCenter,'touchend',function(e){
@@ -48,14 +45,13 @@ var render = function(){
                 timer = timer + 1;
                 var touch = setTimeout(function(){
                     timer = 0;
-                    console.log('next');
                     next();
                 },300);
                 if(timer === 2){
                     timer = 0;
                     clearTimeout(touch);
                     clearTimeout(touch - 1);
-                    console.log('dbTouch');
+                    dbTouch();
                 }
             },true);
         },
@@ -68,6 +64,10 @@ var render = function(){
                 if(winWid < wid){
                     img.width = winWid;
                     img.style.top = (winHei - 24 - winWid / wid * hei) / 2 + 'px';
+                }
+                else{
+                    img.style.top = (winHei - 24 - hei) / 2 + 'px';
+                    img.style.paddingLeft = (winWid - wid) / 2 + 'px'
                 }
                 stage.appendChild(img);
                 name.textContent = list[pointer];
@@ -138,7 +138,34 @@ var render = function(){
         }
     }
     function dbTouch(){
-
+        if(!!document.getElementsByClassName('next')[0] && pointer !== list.length){
+            var thisImg = document.getElementsByClassName('pointer')[0],
+                nextImg = document.getElementsByClassName('next')[0];
+            tool.getImgSize(src.____src + '/' + list[pointer],change);
+            function change(wid,hei){
+                if(winWid < wid){
+                    var timer = 0;
+                    function back(e){
+                        e.stopImmediatePropagation();
+                        timer = timer + 1;
+                        if(timer === 2){
+                            console.log('back');
+                            thisImg.width = winWid;
+                            stage.style.overflow = 'hidden';
+                            nextImg.style.display = 'block';
+                            tool.touchWP(touch,'touchend',back,true,true);
+                        }
+                        setTimeout(function(){
+                            timer = 0;
+                        },300)
+                    }
+                    tool.touchWP(touch,'touchend',back,true);
+                    thisImg.width = wid;
+                    stage.style.overflow = 'visible';
+                    nextImg.style.display = 'none';
+                }
+            }
+        }
     }
     function bufferNext(){
         var img = document.createElement('img');
@@ -149,6 +176,10 @@ var render = function(){
             if(winWid < wid){
                 img.width = winWid;
                 img.style.top = (winHei - 24 - winWid / wid * hei) / 2 + 'px';
+            }
+            else{
+                img.style.top = (winHei - 24 - hei) / 2 + 'px';
+                img.style.paddingLeft = (winWid - wid) / 2 + 'px'
             }
             stage.appendChild(img);
             img.style.left = winWid + 'px';
@@ -163,6 +194,10 @@ var render = function(){
             if(winWid < wid){
                 img.width = winWid;
                 img.style.top = (winHei - 24 - winWid / wid * hei) / 2 + 'px';
+            }
+            else{
+                img.style.top = (winHei - 24 - hei) / 2 + 'px';
+                img.style.paddingLeft = (winWid - wid) / 2 + 'px'
             }
             stage.appendChild(img);
             img.style.left = - winWid + 'px';

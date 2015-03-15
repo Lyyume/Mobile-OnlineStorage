@@ -1,4 +1,4 @@
-var src ,image ,list ,pointer ,height ,width;
+var src ,image ,list ,pointer ,zoom;
 
 render.pageIni();
 render.eventReg();

@@ -213,7 +213,7 @@ var renderAndroid = function(){
                 },0);
                 tool.touchWP(back,'touchend',function(e){  //注册返回按钮事件
                     animateClick(e,this);
-                    setTimeout(function(){
+                    tool.cssAniEvent(back,'AnimationEnd',function(){
                         removeList();
                         arrPoint.length = arrPoint.length - 1;
                         if(arrPoint.length === 0){
@@ -227,7 +227,7 @@ var renderAndroid = function(){
                             pointer = eval(father);
                         }
                         renderAndroid.dataLoad(pointer);
-                    },500);
+                    });
                 });
             }
             function createList(list){
@@ -289,12 +289,12 @@ var renderAndroid = function(){
                             if(pointer[target].____extension === ''){
                                 toggle = false;
                                 animateClick(e,this);
-                                setTimeout(function(){
+                                tool.cssAniEvent(this,'AnimationEnd',function(){
                                     removeList();
                                     arrPoint.push(target);
                                     pointer = pointer[target];
                                     renderAndroid.dataLoad(pointer);
-                                },500);
+                                })
                             }
                             else if(tool.mySome(ext.text,pointer[target].____extension)){
                                 worker.regLocalStorage(JSON.stringify(pointer[target]),'Text');

@@ -4,8 +4,7 @@
 
 #view {
   width: 100%;
-  position: absolute;
-  overflow: hidden; }
+  position: absolute; }
 
 #touch {
   position: fixed;

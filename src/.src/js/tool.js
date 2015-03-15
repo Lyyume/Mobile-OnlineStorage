@@ -49,6 +49,10 @@ var tool = function(){
             else {
                 ele.addEventListener(type,fn,phase)
             }
+        },
+        cssAniEvent: function(ele,type,fn){
+            ele.addEventListener('webkit' + type ,fn ,false);
+            ele.addEventListener(type.toLowerCase() ,fn ,false)
         }
     };
     return public

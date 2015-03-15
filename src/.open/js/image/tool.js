@@ -1,6 +1,7 @@
 var tool = function(){
     var public = {
-        touchWP: function(ele,type,fn,phase){
+        touchWP: function(ele,type,fn,phase,del){
+            del = del || false;
             function toWP(type){
                 switch (type){
                     case 'touchstart':
@@ -13,11 +14,21 @@ var tool = function(){
                 return '';
             }
 
-            if (window.navigator.msPointerEnabled) {
-                ele.addEventListener(toWP(type),fn,phase)
+            if(del){
+                if (window.navigator.msPointerEnabled) {
+                    ele.removeEventListener(toWP(type),fn,phase)
+                }
+                else {
+                    ele.removeEventListener(type,fn,phase)
+                }
             }
-            else {
-                ele.addEventListener(type,fn,phase)
+            else{
+                if (window.navigator.msPointerEnabled) {
+                    ele.addEventListener(toWP(type),fn,phase)
+                }
+                else {
+                    ele.addEventListener(type,fn,phase)
+                }
             }
         },
         getImgSize: function(src,fn){
