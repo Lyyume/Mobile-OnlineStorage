@@ -1,3 +1,43 @@
+@font-face {
+  font-family: SourceHan-N;
+  src: url(./fonts/SourceHanSansSC-Normal.ttf); }
+@font-face {
+  font-family: SourceHan-N;
+  unicode-range: U+0-2ff;
+  src: url(./fonts/Roboto-Light.ttf); }
+@-webkit-keyframes ani-config-show {
+  0% {
+    margin-bottom: -200px; }
+  100% {
+    margin-bottom: 0px; } }
+@keyframes ani-config-show {
+  0% {
+    margin-bottom: -200px; }
+  100% {
+    margin-bottom: 0px; } }
+.ani-config-show {
+  -webkit-animation: ani-config-show 0.3s cubic-bezier(0, 0, 0.22, 1);
+          animation: ani-config-show 0.3s cubic-bezier(0, 0, 0.22, 1);
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards; }
+
+@-webkit-keyframes ani-config-hide {
+  0% {
+    margin-bottom: 0px; }
+  100% {
+    margin-bottom: -200px; } }
+
+@keyframes ani-config-hide {
+  0% {
+    margin-bottom: 0px; }
+  100% {
+    margin-bottom: -200px; } }
+.ani-config-hide {
+  -webkit-animation: ani-config-hide 0.3s cubic-bezier(0.63, 0, 1, 1);
+          animation: ani-config-hide 0.3s cubic-bezier(0.63, 0, 1, 1);
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards; }
+
 * {
   margin: 0px;
   padding: 0px; }
@@ -43,18 +83,13 @@
   width: 100%;
   bottom: 0px;
   height: 24px;
-  background-color: #ffffff; }
+  background-color: #ffffff;
+  font-family: SourceHan-N; }
   #curtain #name {
     font-size: 16px;
-    float: left;
+    float: right;
     padding: 4px; }
   #curtain #number {
     font-size: 16px;
-    float: left;
-    padding: 4px; }
-  #curtain #more-vert {
-    position: absolute;
-    height: 16px;
-    width: 16px;
-    right: 0px;
+    float: right;
     padding: 4px; }

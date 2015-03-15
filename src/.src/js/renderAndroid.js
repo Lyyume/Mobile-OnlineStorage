@@ -29,7 +29,6 @@ var renderAndroid = function(){
                     shade.appendChild(view);
                     body.appendChild(shade);
                     view.style.marginTop = -tool.renderStyle(view,'height',true)/2 + 'px';
-                    console.log(-tool.renderStyle(view,'height',true)/2 + 'px');
                     ok = document.getElementById('view-ok');
                     tool.touchWP(ok,'touchend',function(){
                         body.removeChild(shade);

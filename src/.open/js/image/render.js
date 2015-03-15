@@ -18,7 +18,7 @@ var render = function(){
             document.styleSheets[0].insertRule('@-webkit-keyframes leftIn{ 0%{ margin-left:0px } 100%{ margin-left:' + winWid + 'px } }', 0);
             document.styleSheets[0].insertRule('.leftIn{ -webkit-animation: leftIn 0.3s; -webkit-animation-fill-mode: forwards; }', 0);
         },
-        eventReg:function(){
+        eventReg: function(){
             var timer = 0;
             tool.touchWP(left,'touchend',function(){
                 last();
@@ -87,6 +87,8 @@ var render = function(){
         rightCenter = document.getElementById('rightCenter'),
         name = document.getElementById('name'),
         number = document.getElementById('number'),
+        moreVert = document.getElementById('more-vert'),
+        configCard = document.getElementById('config-card'),
 
         winHei = document.documentElement.clientHeight,
         winWid = document.documentElement.clientWidth;
