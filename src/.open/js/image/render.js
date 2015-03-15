@@ -72,7 +72,9 @@ var render = function(){
                 stage.appendChild(img);
                 name.textContent = list[pointer];
                 number.textContent = (pointer + 1) + '/' + list.length;
-                bufferNext();
+                if(!(pointer === list.length - 1)){
+                    bufferNext();
+                }
             }
         }
     };
@@ -94,7 +96,7 @@ var render = function(){
         winWid = document.documentElement.clientWidth;
 
     function last(){
-        if(!!document.getElementsByClassName('next')[0] && pointer !== 0){
+        if((!!document.getElementsByClassName('next')[0] && pointer !== 0) || pointer === list.length - 1){
             var thisImg = document.getElementsByClassName('pointer')[0],
                 nextImg = document.getElementsByClassName('next')[0],
                 lastImg;
@@ -106,7 +108,9 @@ var render = function(){
                 lastImg.classList.remove('last');
                 lastImg.classList.add('pointer');
                 lastImg.classList.add('leftIn');
-                stage.removeChild(nextImg);
+                if(nextImg){
+                    stage.removeChild(nextImg);
+                }
                 pointer = pointer - 1;
                 name.textContent = list[pointer];
                 number.textContent = (pointer + 1) + '/' + list.length;
@@ -131,7 +135,9 @@ var render = function(){
                 pointer = pointer + 1;
                 name.textContent = list[pointer];
                 number.textContent = (pointer + 1) + '/' + list.length;
-                bufferNext();
+                if(!(pointer === list.length - 1)){
+                    bufferNext();
+                }
             });
             tool.cssAniEvent(nextImg,'AnimationEnd',function(){
                 nextImg.style.left = '0px';
