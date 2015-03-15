@@ -16,3 +16,8 @@
     font-size: 16px;
     position: absolute;
     padding: 4px; }
+
+#play {
+  height: 100px;
+  width: 100px;
+  background-color: red; }

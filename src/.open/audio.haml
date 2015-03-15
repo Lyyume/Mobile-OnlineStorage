@@ -9,6 +9,9 @@
   %body
     #view
       #stage
+        #play
+        %input#volume(type="range" min="0" max="100")
+        %input#time(type="range")
       #curtain
         %span#name 文件名
   %script(src="js/audio/audio.js")

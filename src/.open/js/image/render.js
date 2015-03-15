@@ -146,7 +146,7 @@ var render = function(){
         }
     }
     function dbTouch(){
-        if(!!document.getElementsByClassName('next')[0] && pointer !== list.length){
+        if((!!document.getElementsByClassName('next')[0] && pointer !== 0) || pointer === list.length - 1){
             var thisImg = document.getElementsByClassName('pointer')[0],
                 nextImg = document.getElementsByClassName('next')[0];
             tool.getImgSize(src.____src + '/' + list[pointer],change);
@@ -160,7 +160,9 @@ var render = function(){
                             console.log('back');
                             thisImg.width = winWid;
                             stage.style.overflow = 'hidden';
-                            nextImg.style.display = 'block';
+                            if(nextImg){
+                                nextImg.style.display = 'block';
+                            }
                             tool.touchWP(touch,'touchend',back,true,true);
                         }
                         setTimeout(function(){
@@ -170,7 +172,9 @@ var render = function(){
                     tool.touchWP(touch,'touchend',back,true);
                     thisImg.width = wid;
                     stage.style.overflow = 'visible';
-                    nextImg.style.display = 'none';
+                    if(nextImg){
+                        nextImg.style.display = 'none';
+                    }
                 }
             }
         }

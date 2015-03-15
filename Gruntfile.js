@@ -138,7 +138,6 @@ module.exports = function (grunt){
                 src: [
                     '<%= config.src %>/.open/js/image/tool.js',
                     '<%= config.src %>/.open/js/image/worker.js',
-                    '<%= config.src %>/.open/js/image/ajax.js',
                     '<%= config.src %>/.open/js/image/render.js',
                     '<%= config.src %>/.open/js/image/main.js'
                 ],

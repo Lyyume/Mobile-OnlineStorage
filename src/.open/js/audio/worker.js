@@ -3,6 +3,7 @@ var worker = function(){
         getLocalStorage: function(){
             src = JSON.parse(localStorage.getItem("openAudio"));
             render.createAudio();
+            render.pageIni();
         }
     };
 
