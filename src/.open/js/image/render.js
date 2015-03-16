@@ -146,7 +146,7 @@ var render = function(){
         }
     }
     function dbTouch(){
-        if((!!document.getElementsByClassName('next')[0] && pointer !== 0) || pointer === list.length - 1){
+        if(!!document.getElementsByClassName('next')[0] || pointer === list.length - 1){
             var thisImg = document.getElementsByClassName('pointer')[0],
                 nextImg = document.getElementsByClassName('next')[0];
             tool.getImgSize(src.____src + '/' + list[pointer],change);

@@ -10,8 +10,12 @@
     #view
       #stage
         #play
-        %input#volume(type="range" min="0" max="100")
+          %img#play-icon(src="./img/pause.png" )
         %input#time(type="range")
-      #curtain
-        %span#name 文件名
+        #control
+          #name
+          %img#loop(src="./img/loop.png")
+          #leng
+          %img#volume-icon(src="./img/volume.png")
+          %input#volume(type="range" min="0" max="100")
   %script(src="js/audio/audio.js")

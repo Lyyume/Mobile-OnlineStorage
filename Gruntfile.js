@@ -128,7 +128,6 @@ module.exports = function (grunt){
                 src: [
                     '<%= config.src %>/.open/js/audio/tool.js',
                     '<%= config.src %>/.open/js/audio/worker.js',
-                    '<%= config.src %>/.open/js/audio/ajax.js',
                     '<%= config.src %>/.open/js/audio/render.js',
                     '<%= config.src %>/.open/js/audio/main.js'
                 ],

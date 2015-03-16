@@ -246,7 +246,7 @@ var renderAndroid = function(){
                     if(!_configHide && list[i][0] === '.'){
                         continue
                     }
-                    if(list[i].substr(0,4) === '____'){
+                    if(list[i].substr(0,4) === '____' || list[i] === 'index.html' || list[i] === 'tree.txt' || list[i] === 'create-tree.command' || list[i] === 'index.haml'){
                         continue
                     }
                     div.classList.add('file');
