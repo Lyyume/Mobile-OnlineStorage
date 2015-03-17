@@ -7,8 +7,18 @@
     %title text
     %link(href="css/text.css" rel="stylesheet")
   %body
+    #touch
     #view
       #stage
       #curtain
-        %span#name 文件名
+        #message
+        #configTouch
+          %img#moreVert(src="./img/more_vert.png" )
+          %span#name 文件名
+    #configCard
+      .config#configSave 存储书签
+      .config#configLoad 载入书签
+      .config#configNight 夜间模式切换
+      .config#configSize 字体大小切换
+      .config#configFormat 文档格式化方式切换
   %script(src="js/text/text.js")

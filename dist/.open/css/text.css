@@ -1,3 +1,114 @@
+@font-face {
+  font-family: SourceHan-N;
+  src: url(./fonts/SourceHanSansSC-Normal.ttf); }
+@font-face {
+  font-family: SourceHan-N;
+  unicode-range: U+0-2ff;
+  src: url(./fonts/Roboto-Light.ttf); }
+@-webkit-keyframes ani-config-show {
+  0% {
+    bottom: -220px;
+    opacity: 0; }
+  100% {
+    bottom: 0px;
+    opacity: 1; } }
+@keyframes ani-config-show {
+  0% {
+    bottom: -220px;
+    opacity: 0; }
+  100% {
+    bottom: 0px;
+    opacity: 1; } }
+.ani-config-show {
+  -webkit-animation: ani-config-show 0.5s;
+          animation: ani-config-show 0.5s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards; }
+
+@-webkit-keyframes ani-config-hide {
+  0% {
+    bottom: 0px;
+    opacity: 1; }
+  100% {
+    bottom: -220px;
+    opacity: 0; } }
+
+@keyframes ani-config-hide {
+  0% {
+    bottom: 0px;
+    opacity: 1; }
+  100% {
+    bottom: -220px;
+    opacity: 0; } }
+.ani-config-hide {
+  -webkit-animation: ani-config-hide 0.5s;
+          animation: ani-config-hide 0.5s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards; }
+
+@-webkit-keyframes ani-mark-show {
+  0% {
+    left: 0px;
+    opacity: 0; }
+  100% {
+    left: -73px;
+    opacity: 1; } }
+
+@keyframes ani-mark-show {
+  0% {
+    left: 0px;
+    opacity: 0; }
+  100% {
+    left: -73px;
+    opacity: 1; } }
+.ani-mark-show {
+  -webkit-animation: ani-mark-show 0.5s;
+          animation: ani-mark-show 0.5s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards; }
+
+@-webkit-keyframes ani-mark-hide {
+  0% {
+    left: -73px;
+    opacity: 1; }
+  100% {
+    left: 0px;
+    opacity: 0; } }
+
+@keyframes ani-mark-hide {
+  0% {
+    left: -73px;
+    opacity: 1; }
+  100% {
+    left: 0px;
+    opacity: 0; } }
+.ani-mark-hide {
+  -webkit-animation: ani-mark-hide 0.5s;
+          animation: ani-mark-hide 0.5s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards; }
+
+@-webkit-keyframes ani-message {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
+
+@keyframes ani-message {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
+.ani-message {
+  -webkit-animation: ani-message 2s;
+          animation: ani-message 2s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards; }
+
 * {
   margin: 0px;
   padding: 0px; }
@@ -19,8 +130,44 @@
   width: 100%;
   bottom: 0px;
   height: 24px;
-  background-color: #eeeeee; }
+  background-color: #ffffff; }
+  #curtain #message {
+    float: left;
+    font-family: SourceHan-N;
+    font-size: 16px;
+    margin-left: 4px;
+    opacity: 0; }
   #curtain #name {
     font-size: 16px;
-    position: absolute;
+    float: right;
+    right: 0px;
+    font-family: SourceHan-N;
+    font-size: 16px; }
+  #curtain img {
+    float: right;
+    height: 16px;
+    width: 16px;
     padding: 4px; }
+
+#configCard {
+  position: fixed;
+  right: 0px;
+  bottom: -220px;
+  background-color: #ffffff;
+  box-shadow: 0px -3px 3px rgba(0, 0, 0, 0.16), -3px 0px 3px rgba(0, 0, 0, 0.16);
+  z-index: 100; }
+  #configCard .config {
+    font-family: SourceHan-N;
+    padding: 8px 16px; }
+
+#markCard {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: #ffffff;
+  box-shadow: 0px -3px 3px rgba(0, 0, 0, 0.16), -3px 0px 3px rgba(0, 0, 0, 0.16); }
+
+.mark {
+  font-family: SourceHan-N;
+  font-size: 16px;
+  padding: 8px 16px; }

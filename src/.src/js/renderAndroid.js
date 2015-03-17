@@ -246,7 +246,19 @@ var renderAndroid = function(){
                     if(!_configHide && list[i][0] === '.'){
                         continue
                     }
-                    if(list[i].substr(0,4) === '____' || list[i] === 'index.html' || list[i] === 'tree.txt' || list[i] === 'create-tree.command' || list[i] === 'index.haml'){
+                    if(!_configHide && list[i].substr(0,4) === '____'){
+                        continue
+                    }
+                    if(!_configHide && list[i] === 'index.html'){
+                        continue
+                    }
+                    if(!_configHide && list[i] === 'tree.txt'){
+                        continue
+                    }
+                    if(!_configHide && list[i] === 'create-tree.command'){
+                        continue
+                    }
+                    if(!_configHide && list[i] === 'index.haml'){
                         continue
                     }
                     div.classList.add('file');

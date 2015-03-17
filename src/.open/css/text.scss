@@ -1,3 +1,88 @@
+@font-face {
+  font-family: SourceHan-N;
+  src: url(./fonts/SourceHanSansSC-Normal.ttf);
+}
+@font-face {
+  font-family: SourceHan-N;
+  unicode-range: U+0-2ff;
+  src: url(./fonts/Roboto-Light.ttf);
+}
+
+@keyframes ani-config-show{
+  0%{
+    bottom: -220px;
+    opacity: 0;
+  }
+  100%{
+    bottom: 0px;
+    opacity: 1;
+  }
+}
+.ani-config-show{
+  animation: ani-config-show 0.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes ani-config-hide{
+  0%{
+    bottom: 0px;
+    opacity: 1;
+  }
+  100%{
+    bottom: -220px;
+    opacity: 0;
+  }
+}
+.ani-config-hide{
+  animation: ani-config-hide 0.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes ani-mark-show{
+  0%{
+    left: 0px;
+    opacity: 0;
+  }
+  100%{
+    left: -73px;
+    opacity: 1;
+  }
+}
+.ani-mark-show{
+  animation: ani-mark-show 0.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes ani-mark-hide{
+  0%{
+    left: -73px;
+    opacity: 1;
+  }
+  100%{
+    left: 0px;
+    opacity: 0;
+  }
+}
+.ani-mark-hide{
+  animation: ani-mark-hide 0.5s;
+  animation-fill-mode: forwards;
+}
+@keyframes ani-message{
+  0%{
+    opacity: 1;
+  }
+  50%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+  }
+}
+.ani-message{
+  animation: ani-message 2s;
+  animation-fill-mode: forwards;
+}
+
 *{
   margin: 0px;
   padding: 0px;
@@ -19,10 +104,49 @@
   width: 100%;
   bottom: 0px;
   height: 24px;
-  background-color: #eeeeee;
+  background-color: #ffffff;
+  #message{
+    float: left;
+    font-family: SourceHan-N;
+    font-size: 16px;
+    margin-left: 4px;
+    opacity: 0;
+  }
   #name{
     font-size: 16px;
-    position: absolute;
+    float: right;
+    right: 0px;
+    font-family: SourceHan-N;
+    font-size: 16px;
+  }
+  img{
+    float: right;
+    height: 16px;
+    width: 16px;
     padding: 4px;
   }
+}
+#configCard{
+  position: fixed;
+  right: 0px;
+  bottom: -220px;
+  background-color: #ffffff;
+  box-shadow: 0px -3px 3px rgba(0,0,0,0.16), -3px 0px 3px rgba(0,0,0,0.16);
+  z-index: 100;
+  .config{
+    font-family: SourceHan-N;
+    padding: 8px 16px;
+  }
+}
+#markCard{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: #ffffff;
+  box-shadow: 0px -3px 3px rgba(0,0,0,0.16), -3px 0px 3px rgba(0,0,0,0.16);
+}
+.mark{
+  font-family: SourceHan-N;
+  font-size: 16px;
+  padding: 8px 16px;
 }
