@@ -259,6 +259,10 @@ var renderAndroid = function(){
                 });
             }
             function createList(list){
+                function download(e){
+                    e.stopImmediatePropagation();
+                    window.open(pointer[this['src']].____src.slice(1));
+                }
                 for(var i = 0, No = 0;i < list.length;i++){  //生成文件列表以及注册点击事件
                     var div = document.createElement('div'),
                         type = document.createElement('div'),
@@ -271,7 +275,8 @@ var renderAndroid = function(){
                             audio:['mp3','wav','m4a'],
                             video:['mp4','avi'],
                             other:[]
-                        };
+                        },
+                        timer;
                     if(list[i].substr(0,4) === '____'){
                         continue
                     }
@@ -323,7 +328,11 @@ var renderAndroid = function(){
                     setTimeout(function(div){
                         div.classList.add('ani-file-show');
                     },50 + 50 * i,div);
+                    tool.touchWP(div,'touchstart',function(e){
+                        timer = setTimeout(download.bind(this,e),2000)
+                    });
                     tool.touchWP(div,'touchend',function(e){
+                        clearTimeout(timer);
                         if(toggle){
                             var target = this['src'];
                             if(pointer[target].____extension === ''){
