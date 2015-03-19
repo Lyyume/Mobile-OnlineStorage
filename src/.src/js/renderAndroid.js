@@ -1,15 +1,7 @@
 var renderAndroid = function(){
     var public = {
-        createFirst: function(){
-            var div = document.createElement('div'),
-                divHeight = document.documentElement.clientHeight - 56 + 'px';
-            div.style.height = divHeight;
-            div.innerHTML = '未在缓存中找到数据，请下拉刷新';
-            div.id = 'first';
-            article.appendChild(div);
-        },
         pageIni: function(){
-            if(_configFB){
+            if(config.FB){
                 var fb = document.createElement('div'),
                     fbIcon = document.createElement('div');
                 fb.id = 'floatButton';
@@ -25,10 +17,11 @@ var renderAndroid = function(){
                     fb.classList.add('ani-FB-hide');
                     shade.classList.add('shade');
                     view.classList.add('view');
-                    view.innerHTML = '<div>这个按钮只是一个DEMO！<br>你可以在设置里关掉它<br>请使用带有LocalStorage的浏览器访问本页<br>推荐使用移动版chrome</div><span id="view-ok">好的</span>';
+                    view.innerHTML = '<div>这个按钮只是一个DEMO，<br>你可以在设置里关掉它！<br>请使用带有LocalStorage的浏览器访问本页，<br>安卓平台推荐使用chrome</div><span id="view-ok">好的</span>';
                     shade.appendChild(view);
                     body.appendChild(shade);
                     view.style.marginTop = -tool.renderStyle(view,'height',true)/2 + 'px';
+                    view.classList.add('FB-box-show');
                     ok = document.getElementById('view-ok');
                     tool.touchWP(ok,'touchend',function(){
                         body.removeChild(shade);
@@ -38,14 +31,16 @@ var renderAndroid = function(){
                 });
             }else{
                 var _fb = document.getElementById('floatButton');
-                body.removeChild(_fb);
-                while(true){
-                    _fb = document.getElementById('floatButton');
-                    if(_fb){
-                        body.removeChild(_fb);
-                    }
-                    else{
-                        break;
+                if(_fb){
+                    body.removeChild(_fb);
+                    while(true){
+                        _fb = document.getElementById('floatButton');
+                        if(_fb){
+                            body.removeChild(_fb);
+                        }
+                        else{
+                            break;
+                        }
                     }
                 }
             }
@@ -82,8 +77,11 @@ var renderAndroid = function(){
                 if(document.body.scrollTop === 0){
                     article.style.marginTop = touchMoveY + 'px'
                 }
-                if(touchMoveY > 100){
-
+                if(touchMoveY > 56){
+                    var reText = document.getElementById('refresh-text'),
+                        reImg = document.getElementById('refresh-img');
+                    reText.innerHTML = '松开刷新';
+                    reImg.src = './.src/img/refresh.png'
                 }
                 console.log(e.targetTouches[0].pageY - touchStartY + 'px')
             },true);
@@ -94,25 +92,42 @@ var renderAndroid = function(){
                 if(article.style.marginTop){
                     e.stopPropagation();
                 }
-                if(article.style.marginTop.replace(/px/,'') > 100){
+                if(article.style.marginTop.replace(/px/,'') > 56){
                     ajax.reload();
+                    var reText = document.getElementById('refresh-text'),
+                        reImg = document.getElementById('refresh-img');
+                    reText.innerHTML = '下拉刷新';
+                    reImg.src = './.src/img/down.png'
                 }
                 article.style.marginTop = null;
             },true);
-            tool.touchWP(search,'touchend',function(){
-                alert(localStorage.getItem("src"));
-                ajax.reload();
-            })
         },
         configLoad: function(){
             var configHide = document.getElementById('config-hide'),
                 configFB = document.getElementById('config-FB'),
-                configClean = document.getElementById('config-clean');
+                configClean = document.getElementById('config-clean'),
+                configLoad = document.getElementById('config-load'),
+                configList = document.getElementsByClassName('config');
+
+            if(config.hide){
+                configHide.checked = 'checked'
+            }
+            else{
+                configHide.checked = ''
+            }
+            if(config.FB){
+                configFB.checked = 'checked'
+            }
+            else{
+                configFB.checked = ''
+            }
+
 
             function configFBChange(){
                 var fb = document.getElementById('floatButton');
-                _configFB = configFB.checked;
-                if(_configFB){
+                config.FB = configFB.checked;
+                localStorage.setItem('config',JSON.stringify(config))
+                if(config.FB){
                     renderAndroid.pageIni();
                     fb = document.getElementById('floatButton');
                     fb.classList.remove('ani-FB-hide');
@@ -128,17 +143,20 @@ var renderAndroid = function(){
             }
 
             configHide.addEventListener('change',function(){
-                _configHide = configHide.checked;
+                config.hide = configHide.checked;
+                localStorage.setItem('config',JSON.stringify(config));
                 removeList();
                 renderAndroid.dataLoad(pointer);
             });
             configFB.addEventListener('change',tool.deBounce(configFBChange,500));
             tool.touchWP(configClean,'touchend',function(){
+
                 var view = document.createElement('div'),
                     yes ,no;
                 view.classList.add('view');
                 view.innerHTML = '<div>您真的要清理本地存储吗？<br>此操作将不可恢复</div><span id="view-yes">确认</span><span id="view-no">取消</span>';
                 body.appendChild(view);
+                view.classList.add('FB-box-show');
                 view.style.marginTop = -tool.renderStyle(view,'height',true)/2 + 'px';
                 yes = document.getElementById('view-yes');
                 no = document.getElementById('view-no');
@@ -149,7 +167,18 @@ var renderAndroid = function(){
                 tool.touchWP(no,'touchend',function(e){
                     body.removeChild(view)
                 },true)
-            })
+            });
+            tool.touchWP(configLoad,'touchend',function(){
+                ajax.reload();
+            });
+            for(var i = 0,leng = configList.length;i < leng;i++){
+                tool.touchWP(configList[i],'touchstart',function(){
+                    this.style.backgroundColor = '#03a9f4'
+                });
+                tool.touchWP(configList[i],'touchend',function(){
+                    this.style.backgroundColor = '#ffffff'
+                })
+            }
         },
         dataLoad: function(obj){
             var fileList = Object.keys(obj),
@@ -243,22 +272,22 @@ var renderAndroid = function(){
                             video:['mp4','avi'],
                             other:[]
                         };
-                    if(!_configHide && list[i][0] === '.'){
+                    if(list[i].substr(0,4) === '____'){
                         continue
                     }
-                    if(!_configHide && list[i].substr(0,4) === '____'){
+                    if(!config.hide && list[i][0] === '.'){
                         continue
                     }
-                    if(!_configHide && list[i] === 'index.html'){
+                    if(!config.hide && list[i] === 'index.html'){
                         continue
                     }
-                    if(!_configHide && list[i] === 'tree.txt'){
+                    if(!config.hide && list[i] === 'tree.txt'){
                         continue
                     }
-                    if(!_configHide && list[i] === 'create-tree.command'){
+                    if(!config.hide && list[i] === 'create-tree.command'){
                         continue
                     }
-                    if(!_configHide && list[i] === 'index.haml'){
+                    if(!config.hide && list[i] === 'index.haml'){
                         continue
                     }
                     div.classList.add('file');
@@ -372,6 +401,9 @@ var renderAndroid = function(){
                     for(var n = 0;n < arrPoint.length;n++){
                         m = m + '/' + arrPoint[n];
                     }
+                    if(m.length > 40){
+                        m = '...'
+                    }
                     title.innerHTML = m;
                     pageSet();
                 }
@@ -388,7 +420,6 @@ var renderAndroid = function(){
     var body = document.body,
         top = document.getElementById('top'),
         menu = document.getElementById('menu'),
-        search = document.getElementById('search'),
         aside = document.getElementById('aside'),
         article = document.getElementById('article'),
         back = document.getElementById('back'),
@@ -407,6 +438,7 @@ var renderAndroid = function(){
     function pageSet(){
         title.style.marginTop = (- ( tool.renderStyle(title,'height',true) / 2 )) + 'px';
     }
+
     return public
 }();
 

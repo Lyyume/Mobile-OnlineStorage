@@ -171,6 +171,23 @@
   -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards; }
 
+@-webkit-keyframes FB-box-show {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes FB-box-show {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+.FB-box-show {
+  -webkit-animation: FB-box-show 0.5s;
+          animation: FB-box-show 0.5s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards; }
+
 * {
   padding: 0px;
   margin: 0px; }
@@ -217,16 +234,12 @@
     width: 100%;
     height: 56px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
-    #aside .config label {
+    #aside .config .label-text {
       font-family: SourceHan-N;
       font-size: 16px;
       float: left;
       margin-left: 16px;
       margin-top: 16px; }
-    #aside .config input {
-      float: right;
-      margin-top: 16px;
-      margin-right: 16px; }
   #aside .welcome {
     width: 100%;
     height: 56px;
@@ -245,12 +258,17 @@
   z-index: 0; }
   #article .down {
     position: absolute;
-    margin-top: -56px; }
+    margin-top: -20px;
+    margin-left: 16px;
+    opacity: 0.88; }
     #article .down img {
+      float: left;
       height: 24px;
       width: 24px; }
     #article .down span {
-      font-family: SourceHan-N; }
+      float: left;
+      font-family: SourceHan-N;
+      font-size: 16px; }
   #article #first {
     width: 100%; }
   #article .file {
@@ -355,7 +373,6 @@
   z-index: 10; }
 
 .view {
-  margin: auto;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -363,6 +380,7 @@
   margin-left: -130px;
   background-color: #ffffff;
   z-index: 13;
+  opacity: 0;
   box-shadow: 0px 1px 1.5px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.24); }
   .view div {
     margin: 24px;
@@ -378,3 +396,36 @@
     color: #03A9F4; }
   .view #view-no {
     color: rgba(0, 0, 0, 0.82); }
+
+.checkbox-wrapper {
+  width: 36px;
+  height: 2px;
+  float: right;
+  margin-top: 26px;
+  margin-right: 24px;
+  display: inline-block;
+  background-color: #CCCCCC; }
+
+.checkbox {
+  display: none; }
+
+.checkbox-label {
+  display: block;
+  float: left;
+  width: 16px;
+  height: 16px;
+  margin-top: -9px;
+  margin-left: -8px;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 2px solid #999999;
+  -webkit-transition: all .3s ease-out;
+          transition: all .3s ease-out; }
+
+.checkbox:checked + .checkbox-wrapper {
+  background-color: #0e9d57; }
+
+.checkbox:checked + .checkbox-wrapper .checkbox-label {
+  margin-left: 26px;
+  background-color: #0e9d57;
+  border: 2px solid #0e9d57; }

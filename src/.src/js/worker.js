@@ -92,12 +92,12 @@ var worker = function(){
         },
         setLocalStorage: function(){
             var srcJSON = JSON.stringify(src);
-            localStorage.setItem("src",srcJSON);
+            localStorage.setItem('src',srcJSON);
         },
         getLocalStorage: function(){
-            var srcJSON = localStorage.getItem("src");
+            var srcJSON = localStorage.getItem('src');
             if(srcJSON === null){
-                renderAndroid.createFirst();
+                ajax.reload();
             }
             else{
                 src = JSON.parse(srcJSON);
@@ -110,7 +110,17 @@ var worker = function(){
             localStorage.removeItem('src');
         },
         regLocalStorage: function(str,type){
-            localStorage.setItem("open" + type,str);
+            localStorage.setItem('open' + type,str);
+        },
+        configLoad: function(){
+            config = JSON.parse(localStorage.getItem('config'));
+            if(!config){
+                config = {
+                    hide:false,
+                    FB:true
+                };
+                localStorage.setItem('config',JSON.stringify(config));
+            }
         }
     };
     return public

@@ -123,6 +123,19 @@ $bezier-out: cubic-bezier(.63,0,1,1);
   animation-fill-mode: forwards ;
 }
 
+@keyframes FB-box-show{
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+.FB-box-show{
+  animation: FB-box-show 0.5s ;
+  animation-fill-mode: forwards ;
+}
+
 *{
   padding: 0px;
   margin: 0px;
@@ -172,17 +185,12 @@ $bezier-out: cubic-bezier(.63,0,1,1);
     width: 100%;
     height: 56px;
     border-bottom: 1px solid rgba(0,0,0,0.1);
-    label{
+    .label-text{
       font-family: SourceHan-N;
       font-size: 16px;
       float: left;
       margin-left: 16px;
       margin-top: 16px;
-    }
-    input{
-      float: right;
-      margin-top: 16px;
-      margin-right: 16px;
     }
   }
   .welcome{
@@ -205,13 +213,18 @@ $bezier-out: cubic-bezier(.63,0,1,1);
   z-index: 0;
   .down{
     position: absolute;
-    margin-top: -56px;
+    margin-top: -20px;
+    margin-left: 16px;
+    opacity: 0.88;
     img{
+      float: left;
       height: 24px;
       width: 24px;
     }
     span{
+      float: left;
       font-family: SourceHan-N;
+      font-size: 16px;
     }
   }
   #back{
@@ -335,7 +348,6 @@ $bezier-out: cubic-bezier(.63,0,1,1);
   z-index: 10;
 }
 .view{
-  margin: auto;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -343,6 +355,7 @@ $bezier-out: cubic-bezier(.63,0,1,1);
   margin-left: -130px;
   background-color: #ffffff;
   z-index: 13;
+  opacity: 0;
   box-shadow: 0px 1px 1.5px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.24);
   div{
     margin: 24px;
@@ -361,4 +374,36 @@ $bezier-out: cubic-bezier(.63,0,1,1);
   #view-no{
     color: rgba(0,0,0,0.82);
   }
+}
+.checkbox-wrapper {
+  width: 36px;
+  height: 2px;
+  float: right;
+  margin-top: 26px;
+  margin-right: 24px;
+  display: inline-block;
+  background-color: #CCCCCC;
+}
+.checkbox {
+  display: none;
+}
+.checkbox-label {
+  display: block;
+  float: left;
+  width: 16px;
+  height: 16px;
+  margin-top: -9px;
+  margin-left: -8px;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 2px solid #999999;
+  transition: all .3s ease-out;
+}
+.checkbox:checked + .checkbox-wrapper {
+  background-color: #0e9d57;
+}
+.checkbox:checked + .checkbox-wrapper .checkbox-label {
+  margin-left: 26px;
+  background-color: #0e9d57;
+  border: 2px solid #0e9d57;
 }
